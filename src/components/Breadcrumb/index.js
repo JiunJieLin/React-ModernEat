@@ -1,7 +1,7 @@
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 const Breadcrumb = () => {
   return (
-    <div className="flex py-4 border-b px-10 text-sm text-stone-400">
+    <div className="flex py-4 border-b px-10 text-sm text-slate-400">
       <div className="flex items-center mr-2">
         台灣
         <ChevronRightIcon className="ml-2" />
