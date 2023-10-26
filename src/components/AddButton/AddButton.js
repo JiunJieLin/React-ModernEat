@@ -1,7 +1,18 @@
-import { PlusIcon } from "@radix-ui/react-icons";
+import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import cx from "classnames";
+import { useState } from "react";
+
 const AddButton = () => {
-  const isAdded = true;
+  const [count, setCount] = useState(0);
+  const isAdded = count > 0;
+  const handleAddOnClick = function (e) {
+    e.stopPropagation();
+    setCount((prev) => prev + 1);
+  };
+  const handleRemoveOnClick = function (e) {
+    e.stopPropagation();
+    setCount((prev) => prev - 1);
+  };
   return (
     <div
       className={cx(
@@ -9,7 +20,13 @@ const AddButton = () => {
         { "w-auto  justify-between px-2": isAdded }
       )}
     >
-      <PlusIcon />
+      {isAdded && (
+        <>
+          <TrashIcon onClick={handleRemoveOnClick} />
+          <div className="text-sm px-2">{count}</div>
+        </>
+      )}
+      <PlusIcon onClick={handleAddOnClick} />
     </div>
   );
 };
