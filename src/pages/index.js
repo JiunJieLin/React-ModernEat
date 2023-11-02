@@ -4,17 +4,19 @@ import Advertisement from "@/components/Advertisement";
 import ShopInfo from "@/components/ShopInfo";
 import ExtraAction from "@/components/ExtraAction";
 import ShopMenu from "@/components/ShopMenu";
-
+import { ProductProvider } from "@/data/context";
 const Home = () => {
   return (
-    <main className="min-h-screen mx-auto max-w-[1920px]">
-      <Navigation />
-      <Breadcrumb />
-      <Advertisement />
-      <ShopInfo />
-      <ExtraAction />
-      <ShopMenu />
-    </main>
+    <ProductProvider>
+      <main className="min-h-screen mx-auto max-w-[1920px]">
+        <Navigation />
+        <Breadcrumb />
+        <Advertisement />
+        <ShopInfo />
+        <ExtraAction />
+        <ShopMenu />
+      </main>
+    </ProductProvider>
   );
 };
 

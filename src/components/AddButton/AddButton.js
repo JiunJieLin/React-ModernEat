@@ -1,18 +1,8 @@
 import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import cx from "classnames";
-import { useState } from "react";
 
-const AddButton = () => {
-  const [count, setCount] = useState(0);
+const AddButton = ({ onAdd, onRemove, count }) => {
   const isAdded = count > 0;
-  const handleAddOnClick = function (e) {
-    e.stopPropagation();
-    setCount((prev) => prev + 1);
-  };
-  const handleRemoveOnClick = function (e) {
-    e.stopPropagation();
-    setCount((prev) => prev - 1);
-  };
   return (
     <div
       className={cx(
@@ -22,11 +12,11 @@ const AddButton = () => {
     >
       {isAdded && (
         <>
-          <TrashIcon onClick={handleRemoveOnClick} />
+          <TrashIcon onClick={onRemove} />
           <div className="text-sm px-2">{count}</div>
         </>
       )}
-      <PlusIcon onClick={handleAddOnClick} />
+      <PlusIcon onClick={onAdd} />
     </div>
   );
 };
