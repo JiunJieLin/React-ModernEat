@@ -3,6 +3,7 @@ import cx from "classnames";
 
 const AddButton = ({ onAdd, onRemove, count }) => {
   const isAdded = count > 0;
+  console.log(count);
   return (
     <div
       className={cx(
