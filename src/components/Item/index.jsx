@@ -8,7 +8,7 @@ const Item = ({ data }) => {
   const { handleOnAdd, handleOnRemove } = useCartActions(cart, setCart);
 
   const existingCartItem = cart.find((item) => item.id === data.id);
-  const cartCount = existingCartItem ? existingCartItem.count : 0;
+  const itemCount = existingCartItem ? existingCartItem.count : 0;
 
   return (
     <div className="mb-1 p-4 hover:shadow-xl">
@@ -17,7 +17,7 @@ const Item = ({ data }) => {
         <AddButton
           onAdd={(e) => handleOnAdd(data, e)}
           onRemove={(e) => handleOnRemove(data, e)}
-          count={cartCount}
+          itemCount={itemCount}
         />
       </div>
       <div className="py-2 text-stone-950">

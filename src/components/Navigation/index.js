@@ -19,7 +19,7 @@ const Navigation = () => {
 
       <div className="flex justify-between flex-1 items-center pl-20 pr-2">
         <SearchBar />
-        <Cart count={totalCartCount} />
+        <Cart totalCartCount={totalCartCount} />
       </div>
     </div>
   );

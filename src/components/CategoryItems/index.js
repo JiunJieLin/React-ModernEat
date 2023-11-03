@@ -1,9 +1,10 @@
 import Item from "@/components/Item";
-import { breakfastItems } from "@/components/breakfastItems.js";
+import mockData from "@/data/mockData.json";
+
 const CategoryItems = () => {
   return (
     <div className="grid grid-cols-4">
-      {breakfastItems.map((item) => (
+      {mockData.map((item) => (
         <Item data={item} key={item.id} />
       ))}
     </div>
