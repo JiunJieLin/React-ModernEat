@@ -9,7 +9,7 @@ const SearchBar = () => {
         pr-8 pl-10 text-lg border-b-2 transition-all 
         focus:outline-none active:outline-none
        focus:border-b-slate-400 placeholder:text-sm rounded-full "
-        placeholder="請輸入外送地址"
+        placeholder="輸入想要的耗材名稱"
       />
     </div>
   );
