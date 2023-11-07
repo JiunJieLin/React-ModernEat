@@ -7,7 +7,7 @@ const Breadcrumb = () => {
         <ChevronRightIcon className="ml-2" />
       </div>
       <div className="flex items-center mr-2">
-        台中市
+        台北市
         <ChevronRightIcon className="ml-2" />
       </div>
       <div className="flex items-center mr-2">
