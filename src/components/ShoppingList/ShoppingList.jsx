@@ -69,4 +69,3 @@ const ShoppingList = () => {
 };
 
 export default ShoppingList;
-console.log(123);
