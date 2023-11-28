@@ -1,7 +1,7 @@
 const Cart = ({ totalCartCount }) => {
   return (
     <div>
-      <div className="bg-white text-gray-400 hover:text-black  focus:text-black text-sm py-3 rounded-3xl cursor-pointer hover:opacity-80 transition-opacity flex items-center gap-3 sm:bg-black sm:flex sm:px-4 sm:text-white">
+      <div className="bg-white text-gray-400 hover:text-black  focus:text-black text-sm py-3 rounded-3xl cursor-pointer hover:opacity-80 transition-opacity flex items-center gap-3 sm:flex sm:px-4 sm:border-gray-200 sm:border-2">
         <div className="hidden sm:block ">{totalCartCount} items |</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,7 @@ const Cart = ({ totalCartCount }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 sm:bg-black"
+          className="w-6 h-6 sm:bg-white"
         >
           <path
             strokeLinecap="round"

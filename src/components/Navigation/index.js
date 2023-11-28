@@ -18,7 +18,7 @@ export default function Navigation() {
     <Disclosure as="nav" className="bg-white">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className=" max-w-full px-2 py-3 ">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -33,13 +33,13 @@ export default function Navigation() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center ">
+                <div className="flex  items-center">
                   <div className="text-[28px] hidden sm:block ">
                     Modern<b className="ml-2 ">Eat</b>
                   </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block hover:opacity-80">
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 mt-1">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
