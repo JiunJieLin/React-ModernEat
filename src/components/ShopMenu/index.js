@@ -48,8 +48,8 @@ const ShopMenu = () => {
    * 將處理好的資料傳遞給子元件
    */
   return (
-    <div className="flex items-start relative min-h-screen px-14 pt-8">
-      <div className="w-[320px] pr-5 sticky top-0 left-0">
+    <div className="flex flex-col sm:flex-row items-start relative min-h-screen px-14 pt-8">
+      <div className=" sm:w-[320px] sm:pr-5 sm:sticky top-0 left-0 overflow-x-auto">
         <MenuCategory
           data={category}
           active={activeCategory}

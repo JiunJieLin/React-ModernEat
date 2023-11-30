@@ -7,4 +7,3 @@ const Advertisement = () => {
   );
 };
 export default Advertisement;
-123;

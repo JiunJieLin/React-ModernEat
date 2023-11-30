@@ -25,7 +25,7 @@ const CategoryItems = forwardRef(function CategoryItems(
             >
               {title}
             </div>
-            <div className="grid grid-cols-4">
+            <div className="sm:grid-cols-4 grid grid-cols-1">
               {items?.map((item) => {
                 return <Item key={item.id} data={item} onClick={onClick} />;
               })}
