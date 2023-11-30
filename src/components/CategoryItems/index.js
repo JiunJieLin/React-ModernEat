@@ -15,7 +15,7 @@ const CategoryItems = forwardRef(function CategoryItems(
   }, [active]);
 
   return (
-    <div className="pb-[100px]" ref={ref}>
+    <div className="pb-[100px] " ref={ref}>
       {map(data, (items, title) => {
         return (
           <div key={title} data-cat={title}>

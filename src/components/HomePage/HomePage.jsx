@@ -1,8 +1,9 @@
 import Flipcard from "./Flipcard";
-
+import Navigation from "@/components/Navigation/Navigation.jsx";
 const HomePage = () => {
   return (
     <div>
+      <Navigation />
       <Flipcard />
     </div>
   );

@@ -35,7 +35,7 @@ export default function Navigation() {
     }
   }, [theme, isLocalStorageAvailable]);
   return (
-    <Disclosure as="nav" className="bg-white">
+    <Disclosure as="nav">
       {({ open }) => (
         <>
           <div className=" max-w-full px-2 py-3 ">
