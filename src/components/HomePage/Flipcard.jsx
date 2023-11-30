@@ -22,8 +22,8 @@ const Flipcard = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -31,8 +31,8 @@ const Flipcard = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -40,8 +40,8 @@ const Flipcard = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 5,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -50,7 +50,13 @@ const Flipcard = () => {
     customPaging: (i) => {
       return (
         <a href="#">
-          <Image src={images[i]} width={500} height={500} />
+          <Image
+            priority={true}
+            src={images[i]}
+            alt="homeIcon"
+            width={500}
+            height={500}
+          />
         </a>
       );
     },
