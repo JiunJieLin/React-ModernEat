@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import Advertisement from "@/components/Advertisement";
 import ShopInfo from "@/components/ShopInfo";

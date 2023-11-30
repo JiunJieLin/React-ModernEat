@@ -1,4 +1,4 @@
-import Navigation from "../Navigation";
+import Navigation from "../Navigation/Navigation";
 import Breadcrumb from "../Breadcrumb";
 import Advertisement from "../Advertisement";
 import ShoppingList from "../ShoppingList/ShoppingList";

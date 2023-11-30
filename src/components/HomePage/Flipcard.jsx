@@ -18,35 +18,7 @@ const Flipcard = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-    ],
+
     customPaging: (i) => {
       return (
         <a href="#">
@@ -63,19 +35,21 @@ const Flipcard = () => {
   };
 
   return (
-    <Slider {...settings} className="my-custom-slider flex justify-between">
-      {images.map((image, index) => (
-        <div key={index} className="mb-[150px]">
-          <Image
-            src={image}
-            alt={`Slide ${index + 1}`}
-            className="w-full h-[500px] "
-            width={500}
-            height={500}
-          />
-        </div>
-      ))}
-    </Slider>
+    <div className="mb-[200px]">
+      <Slider {...settings} className="">
+        {images.map((image, index) => (
+          <div key={index} className="mb-[100px]">
+            <Image
+              src={image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-[500px] "
+              width={500}
+              height={500}
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 

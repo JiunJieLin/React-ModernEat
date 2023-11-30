@@ -1,5 +1,5 @@
 import { ProductProvider } from "@/data/context";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation/Navigation";
 import Shop from "@/components/Shop/Shop";
 import Footer from "@/components/Footer";
 import HomePage from "@/components/HomePage/HomePage";
