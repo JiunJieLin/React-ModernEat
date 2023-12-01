@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import MenuCategory from "@/components/MenuCategory";
-import CategoryItems from "@/components/CategoryItems";
+import MenuCategory from "@/components/Shop/MenuCategory";
+import CategoryItems from "@/components/Shop/CategoryItems";
 import mockData from "@/data/mockData";
 
 const ShopMenu = () => {

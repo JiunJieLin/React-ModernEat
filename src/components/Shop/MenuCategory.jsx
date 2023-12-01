@@ -1,5 +1,5 @@
 import React from "react";
-import MenuItem from "@/components/MenuItem/MenuItem";
+import MenuItem from "@/components/Shop/MenuItem";
 
 const MenuCategory = ({ data, active, onClick }) => {
   return (

@@ -1,4 +1,4 @@
-import AddButton from "../AddButton/AddButton";
+import AddButton from "./AddButton";
 import { useContext } from "react";
 import { ProductContext } from "@/data/context";
 import { useCartActions } from "../hooks/useCartActions";

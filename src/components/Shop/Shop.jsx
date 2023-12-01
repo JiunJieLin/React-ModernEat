@@ -1,9 +1,9 @@
 import Navigation from "@/components/Navigation/Navigation";
-import Breadcrumb from "@/components/Breadcrumb";
-import Advertisement from "@/components/Advertisement";
-import ShopInfo from "@/components/ShopInfo";
-import ExtraAction from "@/components/ExtraAction";
-import ShopMenu from "@/components/ShopMenu";
+import Breadcrumb from "@/components/Shop/Breadcrumb";
+import Advertisement from "@/components/Shop/Advertisement";
+import ShopInfo from "@/components/Shop/ShopInfo";
+import ExtraAction from "@/components/Shop/ExtraAction";
+import ShopMenu from "@/components/Shop/ShopMenu";
 import ShoppingList from "@/components/ShoppingList/ShoppingList";
 import { ProductProvider } from "@/data/context";
 const Shop = () => {

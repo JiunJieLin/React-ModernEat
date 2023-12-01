@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import Cart from "@/components/Cart";
+import Cart from "@/components/Shop/Cart";
 import { ProductContext } from "@/data/context";
 const navigation = [{ name: "Home", href: "#", current: true }];
 

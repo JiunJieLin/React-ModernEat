@@ -1,6 +1,6 @@
 import { forwardRef, useEffect } from "react";
 import map from "lodash/map";
-import Item from "@/components/Item";
+import Item from "@/components/Shop/Item";
 
 const CategoryItems = forwardRef(function CategoryItems(
   { data, active, onClick },
