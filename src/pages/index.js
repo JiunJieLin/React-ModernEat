@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <ProductProvider>
       <main className="min-h-screen mx-auto max-w-[1920px] relative">
-        {/* <HomePage /> */}
-        <Shop />
+        <HomePage />
+        {/* <Shop /> */}
         <Footer />
       </main>
     </ProductProvider>
