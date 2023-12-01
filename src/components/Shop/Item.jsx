@@ -18,8 +18,8 @@ const Item = ({ data }) => {
   const itemCount = existingCartItem ? existingCartItem.count : 0;
 
   return (
-    <div className="mb-1 p-4 hover:shadow-xl">
-      <div className="aspect-video overflow-hidden flex items-center relative">
+    <div className="mb-1 p-4 hover:shadow-xl ">
+      <div className="aspect-video overflow-hidden flex items-center relative ">
         <img src={data.image} alt="" />
         <AddButton
           onAdd={(e) => handleOnAdd(data, e)}
@@ -27,7 +27,7 @@ const Item = ({ data }) => {
           itemCount={itemCount}
         />
       </div>
-      <div className="py-2 text-stone-950 relative">
+      <div className="py-2 text-stone-950 relative bg-white dark:bg-slate-300">
         <div>{data.title}</div>
         <div className="flex relative">
           <div className="text-sm opacity-70">${data.price}</div>

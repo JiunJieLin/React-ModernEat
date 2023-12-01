@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import MenuCategory from "@/components/Shop/MenuCategory";
 import CategoryItems from "@/components/Shop/CategoryItems";
 import mockData from "@/data/mockData";
-
+import { ThemeContext } from "@/data/context";
+import { useContext } from "react";
 const ShopMenu = () => {
   const [activeCategory, setActiveCategory] = useState("");
   const [category, setCategory] = useState([]);
   const [items, setItems] = useState([]);
-
+  const { darkMode } = useContext(ThemeContext);
   /**
    * 透過 useEffect 來取得資料
    * 處理資料，切記不要直接使用資料，要先處理過後再使用
@@ -48,16 +49,18 @@ const ShopMenu = () => {
    * 將處理好的資料傳遞給子元件
    */
   return (
-    <div className="flex flex-col px-12 sm:flex-row items-start relative min-h-screen sm:px-14 pt-8">
-      <div className=" sm:w-[320px] sm:pr-5 sm:sticky top-0 left-0 overflow-x-auto">
-        <MenuCategory
-          data={category}
-          active={activeCategory}
-          onClick={handleOnMenuCategoryClick}
-        />
-      </div>
-      <div className="flex-1">
-        <CategoryItems data={items} active={activeCategoryLabel} />
+    <div className={`${darkMode && "dark"}`}>
+      <div className="flex flex-col px-12 sm:flex-row items-start relative min-h-screen sm:px-14 pt-8 bg-white dark:bg-primary-dark">
+        <div className=" sm:w-[320px] sm:pr-5 sm:sticky top-0 left-0 overflow-x-auto">
+          <MenuCategory
+            data={category}
+            active={activeCategory}
+            onClick={handleOnMenuCategoryClick}
+          />
+        </div>
+        <div className="flex-1">
+          <CategoryItems data={items} active={activeCategoryLabel} />
+        </div>
       </div>
     </div>
   );

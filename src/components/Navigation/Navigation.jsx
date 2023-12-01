@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Cart from "@/components/Shop/Cart";
-import { ProductContext } from "@/data/context";
+import { ProductContext, ThemeContext } from "@/data/context";
 const navigation = [{ name: "Home", href: "#", current: true }];
 
 function classNames(...classes) {
@@ -14,31 +14,17 @@ function classNames(...classes) {
 export default function Navigation() {
   const { cart } = useContext(ProductContext);
   const totalCartCount = cart.reduce((acc, item) => acc + item.count, 0);
-  const isLocalStorageAvailable =
-    typeof window !== "undefined" && window.localStorage;
-  const [theme, setTheme] = useState(
-    isLocalStorageAvailable ? localStorage.getItem("theme") || "light" : "light"
-  );
-  const handleToggle = (e) => {
-    if (e.target.checked) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const handleToggle = () => {
+    toggleDarkMode();
   };
-  useEffect(() => {
-    // Check if localStorage is available before using it
-    if (isLocalStorageAvailable) {
-      localStorage.setItem("theme", theme);
-      const localTheme = localStorage.getItem("theme");
-      document.querySelector("html").setAttribute("data-theme", localTheme);
-    }
-  }, [theme, isLocalStorageAvailable]);
+
   return (
     <Disclosure as="nav">
       {({ open }) => (
-        <>
-          <div className=" max-w-full px-2 py-3 ">
+        <div className={`${darkMode && "dark"}`}>
+          <div className=" max-w-full px-2 py-3 bg-white dark:bg-primary-dark">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -54,7 +40,7 @@ export default function Navigation() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex  items-center">
-                  <div className="text-[28px] hidden sm:block ">
+                  <div className="text-[28px] hidden sm:block text-black dark:text-white">
                     Modern<b className="ml-2 ">Eat</b>
                   </div>
                 </div>
@@ -66,9 +52,9 @@ export default function Navigation() {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-gray-900 text-white"
+                            ? "bg-primary-dark text-white dark:bg-white dark:text-black"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
+                          "rounded-md px-4 py-2 text-lg font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -82,7 +68,7 @@ export default function Navigation() {
               <div className="absolute inset-y-0 right-0 flex  gap-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="relative  bg-white p-1 text-gray-400 rounded-lg hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:text-black "
+                  className="relative  p-1 text-gray-400 rounded-lg hover:text-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:text-black "
                 >
                   <a
                     href="https://github.com/JiunJieLin"
@@ -93,10 +79,14 @@ export default function Navigation() {
                   </a>
                 </button>
                 <label className="swap swap-rotate">
-                  <input type="checkbox" onChange={handleToggle} />
+                  <input
+                    type="checkbox"
+                    onChange={handleToggle}
+                    className="w-10 h-10 relative rounded-md dark:bg-opacity-50 dark:text-white"
+                  />
 
                   <svg
-                    className="swap-on fill-current w-6 h-6"
+                    className="swap-on fill-current w-6 h-6 absolute top-2 left-2"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >
@@ -104,7 +94,7 @@ export default function Navigation() {
                   </svg>
 
                   <svg
-                    className="swap-off fill-current w-6 h-6"
+                    className="swap-off fill-current w-6 h-6 absolute top-2 left-2"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                   >
@@ -136,10 +126,12 @@ export default function Navigation() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative">
                   <div>
-                    <Menu.Button className="relative flex rounded-lg bg-gray-800 text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative flex rounded-lg bg-gray-800 dark:bg-white text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <div className="text-white p-3  ">Sign In</div>
+                      <div className="text-white dark:text-black px-4 py-2 text-lg  ">
+                        Sign In
+                      </div>
                     </Menu.Button>
                   </div>
                   <Transition
@@ -218,7 +210,7 @@ export default function Navigation() {
               ))}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );

@@ -6,8 +6,8 @@ const MenuItem = ({ label, active, onClick }) => {
     <div
       onClick={onClick}
       className={cx(
-        "text-gray-850 sm:py-2 text-lg sm:w-full w-20 cursor-pointer text-slate-500 hover:text-slate-900  transition-opacity flex  sm:justify-start justify-center items-center ",
-        { " text-slate-900 font-bold": active }
+        "text-gray-850 sm:py-2 text-lg sm:w-full w-20 cursor-pointer text-slate-500 hover:text-slate-900   dark:hover:text-slate-300 transition-opacity flex  sm:justify-start justify-center items-center ",
+        { " text-slate-900 font-bold dark:text-slate-200": active }
       )}
     >
       <p className="flex">{label}</p>
