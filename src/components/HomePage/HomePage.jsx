@@ -1,4 +1,4 @@
-import Flipcard from "./Flipcard";
+// import Flipcard from "./Flipcard";
 import Link from "next/link";
 import Navigation from "@/components/Navigation/Navigation.jsx";
 import PopularStores from "@/components/HomePage/PopularStores";
@@ -37,7 +37,7 @@ const HomePage = () => {
           </div>
         </div>
         <PopularStores />
-        <Flipcard />
+        {/* <Flipcard /> */}
       </div>
     </div>
   );

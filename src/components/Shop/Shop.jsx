@@ -5,7 +5,7 @@ import Advertisement from "@/components/Shop/Advertisement";
 import ShopInfo from "@/components/Shop/ShopInfo";
 import ExtraAction from "@/components/Shop/ExtraAction";
 import ShopMenu from "@/components/Shop/ShopMenu";
-import ShoppingList from "@/components/ShoppingList/ShoppingList";
+import Footer from "../Footer";
 
 const Shop = () => {
   return (
@@ -18,6 +18,7 @@ const Shop = () => {
           <ShopInfo />
           <ExtraAction />
           <ShopMenu />
+          <Footer />
         </main>
       </div>
     </ProductProvider>

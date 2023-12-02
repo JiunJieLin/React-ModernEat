@@ -25,7 +25,7 @@ export default function Navigation() {
     <Disclosure as="nav">
       {({ open }) => (
         <div className={`${darkMode && "dark"}`}>
-          <div className=" max-w-full px-2 py-3 bg-white dark:bg-primary-dark">
+          <div className=" max-w-full px-2 py-3 bg-white dark:bg-primary-dark border-b-2 border-slate-400/20">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}

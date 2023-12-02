@@ -1,4 +1,4 @@
-import Stores from "./stores";
+import Stores from "../../data/stores";
 import Link from "next/link";
 const PopularStores = () => {
   const selectedStores = Stores.slice(0, 4);
@@ -6,7 +6,9 @@ const PopularStores = () => {
     <div className="flex flex-col items-center gap-8 mt-8">
       <div className="flex items-center  justify-between w-[80vw] ">
         <h2 className="text-[30px] sm:text-[40px]">Popular Stores</h2>
-        <button className="btn btn-primary">View All</button>
+        <Link href="/stores" className="btn btn-primary">
+          View All
+        </Link>
       </div>
       <div
         className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4
