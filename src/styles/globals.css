@@ -17,11 +17,11 @@
 /* /* .custom-svg {
   fill: #a5adbb;
 } */
-/* @import url("https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css");
-@import url("https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"); */
+@import url("https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css");
+@import url("https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css");
 
-/* .slick-dots li {
+.slick-dots li {
   width: 300px !important;
   height: 100px !important;
   margin: 0 20px !important;
-} */
+}
