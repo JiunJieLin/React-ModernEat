@@ -1,8 +1,10 @@
 import Flipcard from "./Flipcard";
+import Link from "next/link";
 import Navigation from "@/components/Navigation/Navigation.jsx";
 import PopularStores from "@/components/HomePage/PopularStores";
 import { ThemeContext } from "@/data/context";
 import { useContext } from "react";
+
 const HomePage = () => {
   const { darkMode } = useContext(ThemeContext);
   return (
@@ -19,9 +21,13 @@ const HomePage = () => {
             肚子餓了嗎？最多種類手刀下單！
           </p>
           <div className=" absolute top-[300px] left-10  text-[20px] flex gap-4  items-end">
-            <button className="px-2 py-3 text-white bg-slate-700 rounded-md hover:opacity-80">
+            <Link
+              href="/shop"
+              className="px-2 py-3 text-white bg-slate-700 rounded-md hover:opacity-80"
+            >
               尋找食物
-            </button>
+            </Link>
+
             <p className="font-bold ">
               或
               <a href="" className="underline ml-2">

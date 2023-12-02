@@ -4,7 +4,7 @@ const ShopInfo = () => {
   const { darkMode } = useContext(ThemeContext);
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className="px-12 sm:mt-7 mb-4 space-y-1 mt-4 ">
+      <div className="px-12 sm:pt-7 pb-4 space-y-1 pt-4 bg-white dark:bg-primary-dark ">
         <h4 className=" gap-2 text-[19px] sm:text-[36px] font-bold text-black dark:text-slate-200">
           非常厲害美食館 信義活力吳興店
         </h4>

@@ -6,7 +6,7 @@ const Breadcrumb = () => {
   console.log("darkMode:", darkMode);
   return (
     <div className={`${darkMode && "dark"}`}>
-      <div className="hidden sm:flex py-4 border-b px-10 text-sm text-slate-400 ">
+      <div className="hidden sm:flex py-4 border-b px-10 text-sm text-slate-400 bg-white dark:bg-primary-dark">
         <div className="flex items-center mr-2">
           台灣
           <ChevronRightIcon className="ml-2" />
