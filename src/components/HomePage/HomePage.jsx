@@ -30,9 +30,9 @@ const HomePage = () => {
 
             <p className="font-bold ">
               或
-              <a href="" className="underline ml-2">
+              <Link href="/login" className="underline ml-2">
                 登入
-              </a>
+              </Link>
             </p>
           </div>
         </div>

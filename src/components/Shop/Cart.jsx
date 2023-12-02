@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
+import Link from "next/link";
 const Cart = ({ totalCartCount }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null;
+  } // 在伺服器端不顯示內容
   return (
-    <div>
+    <Link href="/shoppinglist">
       <div className="bg-white text-gray-400 hover:text-black  focus:text-black text-sm py-3 rounded-3xl cursor-pointer hover:opacity-80 transition-opacity flex items-center gap-3 sm:flex sm:px-4 sm:border-gray-200 sm:border-2">
         <div className="hidden sm:block ">{totalCartCount} items |</div>
         <svg
@@ -9,7 +20,7 @@ const Cart = ({ totalCartCount }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 sm:bg-white"
+          className="w-6 h-6 "
         >
           <path
             strokeLinecap="round"
@@ -18,7 +29,7 @@ const Cart = ({ totalCartCount }) => {
           />
         </svg>
       </div>
-    </div>
+    </Link>
   );
 };
 
