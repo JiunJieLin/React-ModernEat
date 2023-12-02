@@ -1,11 +1,12 @@
 import { useContext } from "react";
+import Link from "next/link";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Cart from "@/components/Shop/Cart";
 import { ProductContext, ThemeContext } from "@/data/context";
-const navigation = [{ name: "Home", href: "#", current: true }];
+const navigation = [{ name: "Home", href: "/", current: true }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -47,7 +48,7 @@ export default function Navigation() {
                 <div className="hidden sm:ml-6 sm:block hover:opacity-80">
                   <div className="flex space-x-4 mt-1">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -59,7 +60,7 @@ export default function Navigation() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>

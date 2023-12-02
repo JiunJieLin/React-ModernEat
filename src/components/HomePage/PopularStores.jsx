@@ -1,5 +1,5 @@
 import Stores from "./stores";
-
+import Link from "next/link";
 const PopularStores = () => {
   const selectedStores = Stores.slice(0, 4);
   return (
@@ -28,7 +28,12 @@ const PopularStores = () => {
               </h2>
               <p>{store.description}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Shop</button>
+                <Link
+                  href={store.id === 1 ? "/shop" : ""}
+                  className="btn btn-primary"
+                >
+                  Shop
+                </Link>
               </div>
             </div>
           </div>
