@@ -12,7 +12,7 @@ const Cart = ({ totalCartCount }) => {
   } // 在伺服器端不顯示內容
   return (
     <Link href="/shoppinglist">
-      <div className="bg-white text-gray-400 hover:text-black  focus:text-black text-sm py-3 rounded-3xl cursor-pointer hover:opacity-80 transition-opacity flex items-center gap-3 sm:flex sm:px-4 sm:border-gray-200 sm:border-2">
+      <div className="bg-white dark:bg-primary-dark text-gray-400 hover:text-black  focus:text-black text-sm py-3 rounded-3xl cursor-pointer hover:opacity-80 dark:hover:text-white transition-opacity flex items-center gap-3 sm:flex sm:px-4 sm:border-gray-200 sm:dark:border-gray-700 sm:border-2">
         <div className="hidden sm:block ">{totalCartCount} items |</div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
