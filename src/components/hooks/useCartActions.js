@@ -39,10 +39,12 @@ export const useCartActions = (cart, setCart) => {
 
   const handleOnAdd = (data) => {
     modifyCart(data, (count) => count + 1);
+    console.log(data, cart);
   };
 
   const handleOnRemove = (data) => {
     modifyCart(data, (count) => count - 1);
+    console.log(data, cart);
   };
 
   return { handleOnAdd, handleOnRemove };
