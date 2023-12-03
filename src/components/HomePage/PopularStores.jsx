@@ -4,18 +4,21 @@ const PopularStores = () => {
   const selectedStores = Stores.slice(0, 4);
   return (
     <div className="flex flex-col items-center gap-8 mt-8">
-      <div className="flex items-center  justify-between w-[80vw] ">
-        <h2 className="text-[30px] sm:text-[40px]">Popular Stores</h2>
+      <div className="flex items-center  justify-between w-full sm:w-[90vw]">
+        <h2 className="text-[40px] sm:text-[40px]">Popular Stores</h2>
         <Link href="/stores" className="btn btn-primary">
           View All
         </Link>
       </div>
       <div
         className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4
-      lg:grid-cols-3 lg:gap-6"
+      lg:grid-cols-3 lg:gap-10"
       >
         {selectedStores.map((store) => (
-          <div key={store.id} className="card w-96 bg-base-100 shadow-xl">
+          <div
+            key={store.id}
+            className="card w-96 shadow-xl bg-slate-100 dark:bg-slate-700 dark:text-white"
+          >
             <figure>
               <img
                 src={store.src}
@@ -32,7 +35,7 @@ const PopularStores = () => {
               <div className="card-actions justify-end">
                 <Link
                   href={store.id === 1 ? "/shop" : ""}
-                  className="btn btn-primary"
+                  className="btn btn-primary text-slate-200"
                 >
                   Shop
                 </Link>

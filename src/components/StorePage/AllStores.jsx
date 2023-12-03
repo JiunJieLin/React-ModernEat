@@ -7,8 +7,8 @@ const AllStores = () => {
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className="flex flex-col items-center gap-8 pt-8 bg-white dark:bg-primary-dark">
-        <div className=" w-[80vw] ">
-          <h2 className="text-[30px] sm:text-[40px]">Stores</h2>
+        <div className="w-full sm:w-[90vw]">
+          <h2 className="text-[40px] ">Stores</h2>
           <p>精選商店</p>
         </div>
         <div
@@ -16,7 +16,10 @@ const AllStores = () => {
       lg:grid-cols-3 lg:gap-6"
         >
           {Stores.map((store) => (
-            <div key={store.id} className="card w-96 bg-base-100 shadow-xl">
+            <div
+              key={store.id}
+              className="card w-96  shadow-xl bg-slate-100 dark:bg-slate-700 dark:text-white"
+            >
               <figure>
                 <img
                   src={store.src}
@@ -27,13 +30,15 @@ const AllStores = () => {
               <div className="card-body">
                 <h2 className="card-title">
                   {store.title}
-                  <div className="badge badge-secondary">Sale</div>
+                  <div className="badge badge-secondary text-slate-200">
+                    Sale
+                  </div>
                 </h2>
                 <p>{store.description}</p>
                 <div className="card-actions justify-end">
                   <Link
                     href={store.id === 1 ? "/shop" : ""}
-                    className="btn btn-primary"
+                    className="btn btn-primary text-slate-200"
                   >
                     Shop
                   </Link>
