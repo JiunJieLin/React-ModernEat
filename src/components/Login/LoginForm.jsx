@@ -58,7 +58,7 @@ const LoginForm = () => {
               className="bg-green-600 text-white text-center rounded-md py-3 cursor-pointer hover:bg-green-700"
               onClick={handleSubmit(handleOnSubmit)}
             >
-              登入
+              Login
             </button>
           </div>
         </div>
