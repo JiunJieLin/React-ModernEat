@@ -1,20 +1,16 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import cx from "classnames";
-import { useState } from "react";
 import { ThemeContext } from "@/data/context";
 import { useContext } from "react";
 
 const LoginForm = () => {
   const { darkMode } = useContext(ThemeContext);
   const {
-    register,
-    getValues,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = () => {
-    const data = getValues();
+  const onSubmit = (data) => {
     console.log(data);
   };
 
@@ -26,65 +22,82 @@ const LoginForm = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <p className="text-center text-black text-2xl">會員登入</p>
-          <div className="space-y-1 flex flex-col">
-            <label
-              htmlFor="name"
-              className="text-sm font-medium text-slate-500"
-            >
-              姓名
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="John Carter"
-              required
-              className={cx(
-                "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2",
-                {
-                  "border-red-400": errors.name,
-                }
-              )}
-              {...register("name", { required: "Username is required" })}
-            />
-            {errors.name && <p>{errors.name}</p>}
-            <label
-              htmlFor="mail"
-              className="text-sm font-medium text-slate-500"
-            >
-              Email
-            </label>
-            <input
-              type="mail"
-              name="mail"
-              id="mail"
-              placeholder="email@example.com"
-              required
-              className={cx(
-                "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2",
-                {
-                  "border-red-400": errors.mail,
-                }
-              )}
-              {...register("email", { required: "Email is required" })}
-            />
-            {errors.email && <p>{errors.email}</p>}
-            <div className="space-y-1 mt-4">
+          <div className=" flex flex-col gap-8">
+            <div className="flex flex-col gap-2">
               <label
-                htmlFor="address"
+                htmlFor="name"
                 className="text-sm font-medium text-slate-500"
               >
-                地址
+                姓名
               </label>
-              <textarea
-                name="address"
-                id="address"
-                required
-                className={cx("bg-white border px-2 py-3 w-full rounded-sm", {
-                  "border-red-400": errors.address,
-                })}
-                {...register("address", { required: true })}
-              ></textarea>
+              <Controller
+                name="name"
+                control={control}
+                rules={{
+                  required: "姓名是必填欄位",
+                  pattern: {
+                    value: /^[A-Z][a-z]*\s[A-Z][a-z]*$/,
+                    message:
+                      "名稱格式不正確（需要兩個文字，每個文字第一個字大寫並用空格隔開",
+                  },
+                }}
+                render={({ field }) => (
+                  <>
+                    <input
+                      {...field}
+                      type="text"
+                      placeholder="John Carter"
+                      className={cx(
+                        "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2 focus:outline-none ",
+                        {
+                          "border-red-400": errors.name,
+                        }
+                      )}
+                    />
+
+                    {errors.name && (
+                      <p className="text-red-500">{errors.name.message}</p>
+                    )}
+                  </>
+                )}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="mail"
+                className="text-sm font-medium text-slate-500"
+              >
+                Email
+              </label>
+              <Controller
+                name="email"
+                control={control}
+                rules={{
+                  required: "Email是必填項目",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "請輸入有效Email",
+                  },
+                }}
+                render={({ field }) => (
+                  <>
+                    <input
+                      {...field}
+                      type="text"
+                      placeholder="email@example.com"
+                      className={cx(
+                        "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2 focus:outline-none",
+                        {
+                          "border-red-400": errors.email,
+                        }
+                      )}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500">{errors.email.message}</p>
+                    )}
+                  </>
+                )}
+              />
             </div>
 
             <button
