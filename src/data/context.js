@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 export const ProductContext = createContext({});
 export const ThemeContext = createContext();
+export const AuthContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const isLocalStorageAvailable =
@@ -15,6 +16,7 @@ export const ProductProvider = ({ children }) => {
 
   const [cart, setCart] = useState(initialCart);
   const [darkMode, setDarkMode] = useState(initialDarkMode);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     if (isLocalStorageAvailable) {
@@ -37,12 +39,16 @@ export const ProductProvider = ({ children }) => {
     setCart,
     darkMode,
     toggleDarkMode,
+    loggedIn,
+    setLoggedIn,
   };
 
   return (
     <ProductContext.Provider value={contextValue}>
       <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
-        {children}
+        <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
+          {children}
+        </AuthContext.Provider>
       </ThemeContext.Provider>
     </ProductContext.Provider>
   );

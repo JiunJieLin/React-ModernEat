@@ -1,10 +1,11 @@
 import { useForm, Controller } from "react-hook-form";
 import cx from "classnames";
-import { ThemeContext } from "@/data/context";
+import { ThemeContext, AuthContext } from "@/data/context";
 import { useContext } from "react";
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
   const { darkMode } = useContext(ThemeContext);
+  const { setLoggedIn } = useContext(AuthContext);
   const {
     control,
     handleSubmit,
@@ -12,6 +13,8 @@ const LoginForm = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    onLogin(data);
+    setLoggedIn(true);
   };
 
   return (
@@ -21,7 +24,7 @@ const LoginForm = () => {
           className=" p-10  rounded-md bg-white dark:bg-slate-100 shadow-2xl sm:w-[500px] md:w-[800px]"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <p className="text-center text-black text-2xl">會員登入</p>
+          <p className="text-center text-black text-2xl pb-10">會員登入</p>
           <div className=" flex flex-col gap-8">
             <div className="flex flex-col gap-2">
               <label

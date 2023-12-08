@@ -1,6 +1,7 @@
 import { ProductProvider } from "@/data/context";
 import Footer from "@/components/Footer";
 import HomePage from "@/components/HomePage/HomePage";
+
 const Home = () => {
   return (
     <ProductProvider>
