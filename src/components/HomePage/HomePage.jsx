@@ -50,5 +50,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// https://www.healingdaily.com.tw/media/article/00/19/1915_4c1f8b8cc2dd.jpeg

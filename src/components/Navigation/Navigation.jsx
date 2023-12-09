@@ -26,7 +26,7 @@ export default function Navigation() {
 
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
-  const { userProfile } = useContext(UserProfileContext);
+  const { userProfile, setUserProfile } = useContext(UserProfileContext);
   const [Icon, setIcon] = useState(false);
   // 在頁面載入時讀取 localStorage 中的 darkMode 值
   const router = useRouter();
@@ -44,12 +44,14 @@ export default function Navigation() {
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
+  useEffect(() => {
+    const storedUserProfile = localStorage.getItem("userProfile");
 
-  const handleToggle = () => {
-    toggleDarkMode();
-    setIcon((prevIcon) => !prevIcon);
-  };
-
+    if (storedUserProfile) {
+      const parsedUserProfile = JSON.parse(storedUserProfile);
+      setUserProfile(parsedUserProfile);
+    }
+  }, [setUserProfile]);
   useEffect(() => {
     // 在頁面載入時讀取 localStorage 中的 loggedIn 值
     const storedLoggedIn = localStorage.getItem("loggedIn");
@@ -59,6 +61,10 @@ export default function Navigation() {
   }, [setLoggedIn]);
   const handleSignInOut = () => {
     !loggedIn && router.push("/login");
+  };
+  const handleToggle = () => {
+    toggleDarkMode();
+    setIcon((prevIcon) => !prevIcon);
   };
 
   const handleLoggedOut = () => {
@@ -195,7 +201,7 @@ export default function Navigation() {
                                   {userProfile.name}
                                 </div>
                                 <div className="text-xs text-gray-500">
-                                  {userProfile.mail}
+                                  {userProfile.email}
                                 </div>
                               </>
                             ) : (

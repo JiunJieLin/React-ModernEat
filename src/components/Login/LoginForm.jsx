@@ -17,6 +17,7 @@ const LoginForm = () => {
     console.log("Logging in...", data);
     setLoggedIn(true);
     setUserProfile(data);
+    localStorage.setItem("userProfile", JSON.stringify(data));
     localStorage.setItem("loggedIn", "true");
     router.push("/");
   };

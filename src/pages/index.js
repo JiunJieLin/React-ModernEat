@@ -4,7 +4,7 @@ import HomePage from "@/components/HomePage/HomePage";
 
 const Home = () => {
   return (
-    <ProductProvider initialLoggedIn={false}>
+    <ProductProvider>
       <main className="min-h-screen mx-auto max-w-[1920px] relative">
         <HomePage />
         <Footer />
