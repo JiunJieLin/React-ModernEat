@@ -2,11 +2,13 @@
 import Link from "next/link";
 import Navigation from "@/components/Navigation/Navigation.jsx";
 import PopularStores from "@/components/HomePage/PopularStores";
-import { ThemeContext } from "@/data/context";
+import { ThemeContext, AuthContext } from "@/data/context";
 import { useContext } from "react";
 
 const HomePage = () => {
   const { darkMode } = useContext(ThemeContext);
+  const { loggedIn } = useContext(AuthContext);
+
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className="bg-white dark:bg-primary-dark">
@@ -28,12 +30,16 @@ const HomePage = () => {
               尋找食物
             </Link>
 
-            <p className="font-bold ">
-              或
-              <Link href="/login" className="underline ml-2">
-                登入
-              </Link>
-            </p>
+            {loggedIn ? (
+              ""
+            ) : (
+              <p className="font-bold ">
+                或
+                <Link href="/login" className="underline ml-2">
+                  登入
+                </Link>
+              </p>
+            )}
           </div>
         </div>
         <PopularStores />

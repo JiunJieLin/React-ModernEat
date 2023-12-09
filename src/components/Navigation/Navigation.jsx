@@ -5,7 +5,12 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import Cart from "@/components/Shop/Cart";
-import { ProductContext, ThemeContext, AuthContext } from "@/data/context";
+import {
+  ProductContext,
+  ThemeContext,
+  AuthContext,
+  UserProfileContext,
+} from "@/data/context";
 import { useRouter } from "next/router";
 
 const navigation = [{ name: "Home", href: "/", current: true }];
@@ -14,12 +19,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navigation({ userProfile, setUserProfile }) {
+export default function Navigation() {
   const { cart } = useContext(ProductContext);
+
   const totalCartCount = cart.reduce((acc, item) => acc + item.count, 0);
 
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const { userProfile } = useContext(UserProfileContext);
   const [Icon, setIcon] = useState(false);
   // 在頁面載入時讀取 localStorage 中的 darkMode 值
   const router = useRouter();
@@ -48,9 +55,8 @@ export default function Navigation({ userProfile, setUserProfile }) {
     const storedLoggedIn = localStorage.getItem("loggedIn");
     if (storedLoggedIn === "true") {
       setLoggedIn(true);
-      console.log(userProfile);
     }
-  }, [setLoggedIn, userProfile]);
+  }, [setLoggedIn]);
   const handleSignInOut = () => {
     !loggedIn && router.push("/login");
   };
@@ -59,6 +65,7 @@ export default function Navigation({ userProfile, setUserProfile }) {
     if (loggedIn) {
       localStorage.removeItem("loggedIn");
       setLoggedIn(false);
+      router.push("/");
     }
   };
   return (
@@ -184,12 +191,12 @@ export default function Navigation({ userProfile, setUserProfile }) {
                             {loggedIn ? (
                               <>
                                 <p>Your Profile</p>
-                                {/* <div className="text-sm text-gray-700">
+                                <div className="text-sm text-gray-700">
                                   {userProfile.name}
                                 </div>
                                 <div className="text-xs text-gray-500">
                                   {userProfile.mail}
-                                </div> */}
+                                </div>
                               </>
                             ) : (
                               "你尚未登入"

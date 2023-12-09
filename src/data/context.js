@@ -3,7 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const ProductContext = createContext({});
 export const ThemeContext = createContext();
 export const AuthContext = createContext();
-
+export const UserProfileContext = createContext();
 export const ProductProvider = ({ children }) => {
   const isLocalStorageAvailable =
     typeof window !== "undefined" && window.localStorage;
@@ -17,7 +17,7 @@ export const ProductProvider = ({ children }) => {
   const [cart, setCart] = useState(initialCart);
   const [darkMode, setDarkMode] = useState(initialDarkMode);
   const [loggedIn, setLoggedIn] = useState(false);
-
+  const [userProfile, setUserProfile] = useState({});
   useEffect(() => {
     if (isLocalStorageAvailable) {
       localStorage.setItem("darkMode", darkMode.toString());
@@ -41,13 +41,17 @@ export const ProductProvider = ({ children }) => {
     toggleDarkMode,
     loggedIn,
     setLoggedIn,
+    userProfile,
+    setUserProfile,
   };
 
   return (
     <ProductContext.Provider value={contextValue}>
       <ThemeContext.Provider value={{ darkMode, toggleDarkMode }}>
         <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
-          {children}
+          <UserProfileContext.Provider value={{ userProfile, setUserProfile }}>
+            {children}
+          </UserProfileContext.Provider>
         </AuthContext.Provider>
       </ThemeContext.Provider>
     </ProductContext.Provider>

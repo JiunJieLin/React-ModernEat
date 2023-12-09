@@ -1,21 +1,24 @@
 import { useForm, Controller } from "react-hook-form";
 import cx from "classnames";
-import { ThemeContext, AuthContext } from "@/data/context";
+import { ThemeContext, AuthContext, UserProfileContext } from "@/data/context";
 import { useContext } from "react";
-
-const LoginForm = ({ onLogin }) => {
+import { useRouter } from "next/router";
+const LoginForm = () => {
   const { darkMode } = useContext(ThemeContext);
   const { setLoggedIn } = useContext(AuthContext);
+  const { setUserProfile } = useContext(UserProfileContext);
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const router = useRouter();
   const onSubmit = (data) => {
     console.log("Logging in...", data);
-    onLogin(data);
     setLoggedIn(true);
+    setUserProfile(data);
     localStorage.setItem("loggedIn", "true");
+    router.push("/");
   };
 
   return (
