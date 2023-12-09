@@ -12,9 +12,10 @@ const LoginForm = ({ onLogin }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("Logging in...", data);
     onLogin(data);
     setLoggedIn(true);
+    localStorage.setItem("loggedIn", "true");
   };
 
   return (

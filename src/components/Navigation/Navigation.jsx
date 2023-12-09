@@ -14,15 +14,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navigation({ userProfile }) {
+export default function Navigation({ userProfile, setUserProfile }) {
   const { cart } = useContext(ProductContext);
   const totalCartCount = cart.reduce((acc, item) => acc + item.count, 0);
 
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const [Icon, setIcon] = useState(false);
   // 在頁面載入時讀取 localStorage 中的 darkMode 值
   const router = useRouter();
+
   useEffect(() => {
     const storedDarkMode = localStorage.getItem("darkMode");
     if (storedDarkMode === "true") {
@@ -41,10 +42,25 @@ export default function Navigation({ userProfile }) {
     toggleDarkMode();
     setIcon((prevIcon) => !prevIcon);
   };
+
+  useEffect(() => {
+    // 在頁面載入時讀取 localStorage 中的 loggedIn 值
+    const storedLoggedIn = localStorage.getItem("loggedIn");
+    if (storedLoggedIn === "true") {
+      setLoggedIn(true);
+      console.log(userProfile);
+    }
+  }, [setLoggedIn, userProfile]);
   const handleSignInOut = () => {
-    router.push("/login");
+    !loggedIn && router.push("/login");
   };
 
+  const handleLoggedOut = () => {
+    if (loggedIn) {
+      localStorage.removeItem("loggedIn");
+      setLoggedIn(false);
+    }
+  };
   return (
     <Disclosure as="nav">
       {({ open }) => (
@@ -138,10 +154,7 @@ export default function Navigation({ userProfile }) {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative">
                   <div>
-                    <Menu.Button
-                      className="relative flex rounded-lg bg-gray-800 dark:bg-white text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      onClick={handleSignInOut}
-                    >
+                    <Menu.Button className="relative flex rounded-lg bg-gray-800 dark:bg-white text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <div className="text-white dark:text-black px-4 py-2 text-lg  ">
@@ -171,15 +184,15 @@ export default function Navigation({ userProfile }) {
                             {loggedIn ? (
                               <>
                                 <p>Your Profile</p>
-                                <div className="text-sm text-gray-700">
+                                {/* <div className="text-sm text-gray-700">
                                   {userProfile.name}
                                 </div>
                                 <div className="text-xs text-gray-500">
-                                  {userProfile.email}
-                                </div>
+                                  {userProfile.mail}
+                                </div> */}
                               </>
                             ) : (
-                              ""
+                              "你尚未登入"
                             )}
                           </a>
                         )}
@@ -193,8 +206,11 @@ export default function Navigation({ userProfile }) {
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
+                            onClick={
+                              loggedIn ? handleLoggedOut : handleSignInOut
+                            }
                           >
-                            {loggedIn ? "Sign In" : "Sign Out"}
+                            {loggedIn ? "Sign Out" : "Sign In"}
                           </a>
                         )}
                       </Menu.Item>
