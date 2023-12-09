@@ -1,4 +1,4 @@
-export const useCartActions = (cart, setCart) => {
+export const useCartActions = (cart, setCart, loggedIn) => {
   const modifyCart = (itemToModify, changeCount) => {
     setCart((previousCart) => {
       // 尋找物品是否已經在購物車中
@@ -38,13 +38,17 @@ export const useCartActions = (cart, setCart) => {
   };
 
   const handleOnAdd = (data) => {
-    modifyCart(data, (count) => count + 1);
-    console.log(data, cart);
+    if (loggedIn) {
+      modifyCart(data, (count) => count + 1);
+      console.log(data, cart);
+    }
   };
 
   const handleOnRemove = (data) => {
-    modifyCart(data, (count) => count - 1);
-    console.log(data, cart);
+    if (loggedIn) {
+      modifyCart(data, (count) => count - 1);
+      console.log(data, cart);
+    }
   };
 
   return { handleOnAdd, handleOnRemove };

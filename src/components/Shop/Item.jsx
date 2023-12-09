@@ -1,13 +1,18 @@
 import AddButton from "./AddButton";
 import { useContext } from "react";
-import { ProductContext } from "@/data/context";
+import { ProductContext, AuthContext } from "@/data/context";
 import { useCartActions } from "../hooks/useCartActions";
 import { HeartIcon, HeartFilledIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
 const Item = ({ data }) => {
   const { cart, setCart } = useContext(ProductContext);
-  const { handleOnAdd, handleOnRemove } = useCartActions(cart, setCart);
+  const { loggedIn } = useContext(AuthContext);
+  const { handleOnAdd, handleOnRemove } = useCartActions(
+    cart,
+    setCart,
+    loggedIn
+  );
 
   const [clicked, setClicked] = useState(false);
   const handleHeartClick = () => {
