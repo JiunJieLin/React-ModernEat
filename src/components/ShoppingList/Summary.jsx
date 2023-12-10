@@ -1,11 +1,16 @@
-import { ThemeContext, ProductContext } from "@/data/context";
+import { ThemeContext, ProductContext, AuthContext } from "@/data/context";
 import { useContext } from "react";
 import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import { useCartActions } from "../hooks/useCartActions";
 const Summary = () => {
   const { darkMode } = useContext(ThemeContext);
   const { cart, setCart } = useContext(ProductContext);
-  const { handleOnAdd, handleOnRemove } = useCartActions(cart, setCart);
+  const { loggedIn } = useContext(AuthContext);
+  const { handleOnAdd, handleOnRemove } = useCartActions(
+    cart,
+    setCart,
+    loggedIn
+  );
 
   return (
     <div className={`${darkMode && "dark"}`}>

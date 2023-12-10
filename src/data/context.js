@@ -33,7 +33,9 @@ export const ProductProvider = ({ children }) => {
   const toggleDarkMode = () => {
     setDarkMode((prevDarkMode) => !prevDarkMode);
   };
-
+  const clearCart = () => {
+    setCart([]);
+  };
   const contextValue = {
     cart,
     setCart,
@@ -43,6 +45,7 @@ export const ProductProvider = ({ children }) => {
     setLoggedIn,
     userProfile,
     setUserProfile,
+    clearCart,
   };
 
   return (

@@ -20,7 +20,7 @@ function classNames(...classes) {
 }
 
 export default function Navigation() {
-  const { cart } = useContext(ProductContext);
+  const { cart, clearCart } = useContext(ProductContext);
 
   const totalCartCount = cart.reduce((acc, item) => acc + item.count, 0);
 
@@ -71,6 +71,7 @@ export default function Navigation() {
     if (loggedIn) {
       localStorage.removeItem("loggedIn");
       setLoggedIn(false);
+      clearCart();
       router.push("/");
     }
   };
