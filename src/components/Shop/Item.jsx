@@ -4,11 +4,11 @@ import { ProductContext, AuthContext } from "@/data/context";
 import { useCartActions } from "../hooks/useCartActions";
 import { HeartIcon, HeartFilledIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-
+import Modal from "./Modal";
 const Item = ({ data }) => {
   const { cart, setCart } = useContext(ProductContext);
   const { loggedIn } = useContext(AuthContext);
-  const { handleOnAdd, handleOnRemove } = useCartActions(
+  const { handleOnAdd, handleOnRemove, showModal, closeModal } = useCartActions(
     cart,
     setCart,
     loggedIn
@@ -45,6 +45,7 @@ const Item = ({ data }) => {
           </button>
         </div>
       </div>
+      <Modal showModal={showModal} closeModal={closeModal} />
     </div>
   );
 };

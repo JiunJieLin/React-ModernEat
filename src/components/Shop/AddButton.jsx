@@ -1,6 +1,8 @@
 import { PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import cx from "classnames";
-
+// import Modal from "./Modal";
+// import { useContext } from "react";
+// import { AuthContext } from "@/data/context";
 const AddButton = ({ onAdd, onRemove, itemCount }) => {
   const isAdded = itemCount > 0;
   return (

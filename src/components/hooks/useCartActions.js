@@ -1,4 +1,6 @@
+import { useState } from "react";
 export const useCartActions = (cart, setCart, loggedIn) => {
+  const [showModal, setShowModal] = useState(false);
   const modifyCart = (itemToModify, changeCount) => {
     setCart((previousCart) => {
       // 尋找物品是否已經在購物車中
@@ -41,15 +43,20 @@ export const useCartActions = (cart, setCart, loggedIn) => {
     if (loggedIn) {
       modifyCart(data, (count) => count + 1);
       console.log(data, cart);
+    } else {
+      setShowModal(true);
     }
   };
-
   const handleOnRemove = (data) => {
     if (loggedIn) {
       modifyCart(data, (count) => count - 1);
       console.log(data, cart);
+    } else {
+      setShowModal(true);
     }
   };
-
-  return { handleOnAdd, handleOnRemove };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  return { handleOnAdd, handleOnRemove, showModal, closeModal };
 };
