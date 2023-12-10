@@ -5,7 +5,9 @@ const PopularStores = () => {
   return (
     <div className="flex flex-col items-center gap-8 mt-8">
       <div className="flex items-center  justify-between w-full sm:w-[90vw]">
-        <h2 className="text-[40px] sm:text-[40px]">Popular Stores</h2>
+        <h2 className="text-[40px] sm:text-[40px] text-black dark:text-slate-300">
+          Popular Stores
+        </h2>
         <Link href="/stores" className="btn btn-primary">
           View All
         </Link>
@@ -17,7 +19,7 @@ const PopularStores = () => {
         {selectedStores.map((store) => (
           <div
             key={store.id}
-            className="card w-96 shadow-xl bg-slate-100 dark:bg-slate-700 dark:text-white"
+            className="card w-96 shadow-xl bg-slate-100 text-black dark:bg-slate-700 dark:text-white"
           >
             <figure>
               <img

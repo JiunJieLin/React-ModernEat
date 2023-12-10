@@ -7,7 +7,7 @@ const AllStores = () => {
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className="flex flex-col items-center gap-8 pt-8 bg-white dark:bg-primary-dark">
-        <div className="w-full sm:w-[90vw]">
+        <div className="w-full sm:w-[90vw] text-black dark:text-slate-300">
           <h2 className="text-[40px] ">Stores</h2>
           <p>精選商店</p>
         </div>
@@ -18,7 +18,7 @@ const AllStores = () => {
           {Stores.map((store) => (
             <div
               key={store.id}
-              className="card w-96  shadow-xl bg-slate-100 dark:bg-slate-700 dark:text-white"
+              className="card w-96  shadow-xl bg-slate-100 dark:bg-slate-700  text-black dark:text-slate-300"
             >
               <figure>
                 <img

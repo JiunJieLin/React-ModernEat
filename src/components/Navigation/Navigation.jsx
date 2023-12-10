@@ -123,7 +123,7 @@ export default function Navigation() {
               <div className="absolute inset-y-0 right-0 flex  gap-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="relative  p-1 text-gray-400 rounded-lg hover:text-black dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:text-black "
+                  className="relative w-10 h-10 p-2 hover:bg-slate-100 dark:hover:bg-slate-700  text-gray-400 rounded-lg hover:text-black dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:text-black "
                 >
                   <a
                     href="https://github.com/JiunJieLin"
