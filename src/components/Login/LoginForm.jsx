@@ -56,7 +56,7 @@ const LoginForm = () => {
                       type="text"
                       placeholder="John Carter"
                       className={cx(
-                        "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2 focus:outline-none ",
+                        "text-sm font-medium text-slate-500 rounded-lg bg-white border-2 py-2 px-2 focus:outline-none ",
                         {
                           "border-red-400": errors.name,
                         }
@@ -94,7 +94,7 @@ const LoginForm = () => {
                       type="text"
                       placeholder="email@example.com"
                       className={cx(
-                        "text-sm font-medium text-slate-500 bg-white border-2 py-2 px-2 focus:outline-none",
+                        "text-sm font-medium text-slate-500 rounded-lg bg-white border-2 py-2 px-2 focus:outline-none",
                         {
                           "border-red-400": errors.email,
                         }
